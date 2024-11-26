@@ -109,9 +109,11 @@ def generate_data_file(filename='bdd100k.data'):
 if __name__ == '__main__':
 
     logging.info('Starting YOLO labels creation')
-    generate_yolo_labels(PATHS['labels_path_json_train'], PATHS['labels_save_path_train'],
+    print("Start yolo train label convertion\n")
+    generate_yolo_labels(json_path=PATHS['labels_path_json_train'], save_path=PATHS['labels_save_path_train'],
                          fname_prefix=None, fname_postfix=None)
-    generate_yolo_labels(PATHS['labels_path_json_val'], PATHS['labels_save_path_val'],
+    print('Start yolo val label convertion\n')
+    generate_yolo_labels(json_path=PATHS['labels_path_json_val'], save_path=PATHS['labels_save_path_val'],
                          fname_prefix=None, fname_postfix=None)
 
     # Generate labels for augmented images (if needed)
@@ -120,12 +122,7 @@ if __name__ == '__main__':
     # generate_yolo_labels(PATHS['labels_path_json_val'], PATHS['labels_save_path_val'],
     #                      fname_prefix='val_', fname_postfix='_fake_B')
 
-    # Generate test files
-    logging.info('Starting YOLO filenames file creation')
-    generate_yolo_filenames(
-        PATHS['images_path_train'], PATHS['labels_save_path_train'], PATHS['file_path_train'])
-    generate_yolo_filenames(
-        PATHS['images_path_test'], PATHS['labels_save_path_test'], PATHS['file_path_test'])
+    # Generate test files(ignore now)
 
     generate_names_file(filename='bdd100k.names')
     generate_data_file(filename='bdd100k.data')
